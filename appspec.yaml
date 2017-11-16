@@ -3,3 +3,16 @@ os: linux
 files:
   - source: /
     destination: /var/www/sampley
+hooks:
+  BeforeInstall:
+    - location: deploy_scripts/before_install.sh
+      timeout: 300
+      runas: root
+  ApplicationStart:
+    - location: deploy_scripts/application_start.sh
+      timeout: 3000
+      runas: root
+  ApplicationStop:
+    - location: deploy_scripts/stop_server.sh
+      timeout: 300
+      runas: root
